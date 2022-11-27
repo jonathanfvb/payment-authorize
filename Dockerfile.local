@@ -1,0 +1,38 @@
+#
+## Build
+FROM php:8.1-fpm-alpine as php
+
+# Install system dependencies
+RUN apk update --no-cache \
+	&& apk add \
+	icu-dev \
+	oniguruma-dev \
+	tzdata
+
+# Install PHP extensions
+RUN docker-php-ext-install intl pdo_mysql mbstring
+
+# Install xdebug
+RUN apk --no-cache add autoconf g++ make \
+	&& pecl install xdebug \
+	&& docker-php-ext-enable xdebug \
+	&& rm -rf /tmp/pear; apk del autoconf g++ make;
+
+# Config xdebug
+#RUN echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# Clear cache
+RUN rm -rf /var/cache/apk/*
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www/app
+
+# Copy source
+COPY . .
+
+# Run Application
+EXPOSE 8090
+CMD ["php", "-S", "0.0.0.0:8090"]
