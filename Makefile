@@ -9,3 +9,6 @@ update:
 
 down:
 	docker-compose down
+
+test:
+	docker exec -it payment-authorize_app vendor/bin/phpunit tests --color --testdox
