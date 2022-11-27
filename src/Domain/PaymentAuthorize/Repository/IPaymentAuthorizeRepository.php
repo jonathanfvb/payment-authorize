@@ -4,7 +4,7 @@ namespace PaymentAuthorize\Domain\PaymentAuthorize\Repository;
 
 use PaymentAuthorize\Domain\PaymentAuthorize\Entity\PaymentAuthorize;
 
-interface PaymentAuthorizeRepository
+interface IPaymentAuthorizeRepository
 {
     public function findByPaymentId(string $paymentId): ?PaymentAuthorize;
 }
