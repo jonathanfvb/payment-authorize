@@ -5,9 +5,9 @@ namespace PaymentAuthorize\Domain\PaymentAuthorize\UseCase;
 use PaymentAuthorize\Domain\PaymentAuthorize\DTO\AuthorizePaymentRequest;
 use PaymentAuthorize\Domain\PaymentAuthorize\DTO\AuthorizedPaymentReponse;
 use PaymentAuthorize\Domain\PaymentAuthorize\Repository\IPaymentAuthorizeRepository;
-use \Exception;
+use Exception;
 
-class AuthorizePaymentUC
+class AuthorizePaymentUC implements IAuthorizePaymentUC
 {
     private IPaymentAuthorizeRepository $paymentAuthorizeRepository;
     
