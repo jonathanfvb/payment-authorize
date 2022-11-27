@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\App\Controller;
 
-use PHPUnit\Framework\TestCase;
-use PaymentAuthorize\Domain\PaymentAuthorize\UseCase\IAuthorizePaymentUC;
-use PaymentAuthorize\App\Controllers\PaymentAuthorizeContoller;
-use Psr\Http\Message\ServerRequestInterface;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\TestCase;
+use PaymentAuthorize\App\Controllers\PaymentAuthorizeContoller;
+use PaymentAuthorize\Domain\PaymentAuthorize\UseCase\IAuthorizePaymentUC;
+use Psr\Http\Message\ServerRequestInterface;
 
 final class PaymentAuthorizeContollerTest extends TestCase
 {
